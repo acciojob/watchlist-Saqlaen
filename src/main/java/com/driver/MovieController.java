@@ -1,4 +1,4 @@
-package com.driver.controller;
+package com.driver;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,10 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.driver.model.Director;
-import com.driver.model.Movie;
-import com.driver.service.MovieService;
 
 @RestController
 @RequestMapping( value = "/movies")

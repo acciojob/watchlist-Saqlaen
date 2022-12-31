@@ -1,11 +1,8 @@
-package com.driver.dao;
+package com.driver;
 
 import java.util.*;
 
 import org.springframework.stereotype.Repository;
-
-import com.driver.model.Director;
-import com.driver.model.Movie;
 
 @Repository
 public class MovieRepository {

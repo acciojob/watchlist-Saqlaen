@@ -1,6 +1,4 @@
-package com.driver.model;
-
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+package com.driver;
 
 
 public class Movie {
