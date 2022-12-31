@@ -90,7 +90,7 @@ Controller Name - deleteAllDirectors
     }
 
     @GetMapping("/get-all-movies")
-    public ResponseEntity< List<Movie> > getAllMovies(){
+    public ResponseEntity< List<Movie> > findAllMovies(){
         List<Movie> li = null;
         try {
             li = this.movieService.getAllMovieService();
