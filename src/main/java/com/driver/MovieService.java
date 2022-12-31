@@ -32,11 +32,11 @@ public class MovieService {
         return this.movierepository.getDirectorRepo(name);
     }
 
-    public List<Movie> getMovieByDir(String name ){
+    public List<String> getMovieByDir(String name ){
         return this.movierepository.getMovieList(name);
     }
 
-    public List<Movie> getAllMovieService(){
+    public List<String> getAllMovieService(){
         return this.movierepository.getAllMovieRepo();
     }
 

@@ -78,8 +78,8 @@ Controller Name - deleteAllDirectors
     }
 
     @GetMapping("/get-movies-by-director-name/{director}")
-    public ResponseEntity< List< Movie > > getMoviesByDirectorName(@PathVariable("director") String name ){
-        List<Movie> li = null;
+    public ResponseEntity< List< String > > getMoviesByDirectorName(@PathVariable("director") String name ){
+        List<String> li = null;
         try {
             li = this.movieService.getMovieByDir(name);
             return ResponseEntity.of( Optional.of(li) );
@@ -90,8 +90,8 @@ Controller Name - deleteAllDirectors
     }
 
     @GetMapping("/get-all-movies")
-    public ResponseEntity< List<Movie> > findAllMovies(){
-        List<Movie> li = null;
+    public ResponseEntity< List<String> > findAllMovies(){
+        List<String> li = null;
         try {
             li = this.movieService.getAllMovieService();
             if( li.size() != 0 ){

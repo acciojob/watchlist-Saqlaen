@@ -9,7 +9,7 @@ public class MovieRepository {
     
     private HashMap<String,Movie> moviemap = new HashMap<>();
     private HashMap<String,Director> dirmap = new HashMap<>();
-    private HashMap<String, List<Movie> > pair = new HashMap<>();
+    private HashMap<String, List<String> > pair = new HashMap<>();
 
 
     public String addMovieRepo(Movie m ){
@@ -27,17 +27,16 @@ public class MovieRepository {
     }
     
     public String addPairRepo( String movieName, String directorName ){
-        List<Movie> li = null;
+        List<String> li = null;
         if( moviemap.containsKey( movieName ) && dirmap.containsKey( directorName ) ){    
-            Movie movie = moviemap.get( movieName );
             if( pair.containsKey( directorName) ){
                 li = pair.get(directorName);
-                li.add( movie );
+                li.add( movieName );
                 pair.put( directorName, li );
             }
             else{
                 li = new ArrayList<>();
-                li.add(movie);
+                li.add(movieName);
                 pair.put(directorName, li);
             }
         }
@@ -59,17 +58,17 @@ public class MovieRepository {
         return null;
     }
 
-    public List<Movie> getMovieList( String directorName ){
+    public List<String> getMovieList( String directorName ){
         if( pair.containsKey(directorName) ){
             return pair.get( directorName );
         }
         return new LinkedList<>();
     }
 
-    public List<Movie> getAllMovieRepo(){
-        List<Movie> movieList  = new LinkedList<>();
+    public List<String> getAllMovieRepo(){
+        List<String> movieList  = new LinkedList<>();
         for( String str : moviemap.keySet() ){
-            movieList.add( moviemap.get(str) );
+            movieList.add( str );
         }
         return movieList;
     }
@@ -77,12 +76,12 @@ public class MovieRepository {
     public String deleteDirWorkRepo(String name ){
         // get dir movies 
         if( pair.containsKey(name) ){
-            List<Movie> dirMovies = pair.get(name);
+            List<String> dirMovies = pair.get(name);
             pair.remove(name);
             dirmap.remove( name );
-            for( Movie m : dirMovies ){
-                if( moviemap.containsKey( m.getName() ) ){
-                    moviemap.remove( m.getName() );
+            for( String m : dirMovies ){
+                if( moviemap.containsKey( m ) ){
+                    moviemap.remove( m );
                 }
             }
         }
@@ -93,12 +92,12 @@ public class MovieRepository {
     }
 
     public String deleteAllMovieRelatedToDirector(){
-        for( Map.Entry< String, List<Movie> > entry : pair.entrySet() ){
+        for( Map.Entry< String, List<String> > entry : pair.entrySet() ){
             String dirName = entry.getKey();
-            List<Movie> list = entry.getValue();
-            for( Movie name : list  ){
-                if( moviemap.containsKey( name.getName()) ){
-                    moviemap.remove( name.getName() );
+            List<String> list = entry.getValue();
+            for( String name : list  ){
+                if( moviemap.containsKey( name ) ){
+                    moviemap.remove( name );
                 }
             }
             pair.remove( dirName );
